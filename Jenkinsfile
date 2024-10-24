@@ -15,7 +15,7 @@ pipeline {
     stage('Git Clone') {
       steps {
         echo 'Git Clone'
-        git url: 'https://github.com/design-view/springshop.git',
+        git url: 'https://github.com/design-view/springproject.git',
           branch: 'main', credentialsId: 'gitToken'
       }
     }
@@ -31,8 +31,8 @@ pipeline {
         echo 'Docker Image Build'                
         dir("${env.WORKSPACE}") {
           sh """
-            docker build -t pinkcandy02/shopspring:$BUILD_NUMBER .
-            docker tag pinkcandy02/shopspring:$BUILD_NUMBER pinkcandy02/shopspring:latest
+            docker build -t pinkcandy02/springproject:$BUILD_NUMBER .
+            docker tag pinkcandy02/springproject:$BUILD_NUMBER pinkcandy02/springproject:latest
             """
         }
       }
@@ -45,15 +45,15 @@ pipeline {
     stage('Docker Image Push') {
       steps {
         echo 'Docker Image Push'  
-        sh "docker push pinkcandy02/shopspring:latest"
+        sh "docker push pinkcandy02/springproject:latest"
       }
     }
     stage('Cleaning up') { 
       steps { 
         echo 'Cleaning up unused Docker images on Jenkins server'
         sh """
-           docker rmi pinkcandy02/shopspring:$BUILD_NUMBER
-           docker rmi pinkcandy02/shopspring:latest
+           docker rmi pinkcandy02/springproject:$BUILD_NUMBER
+           docker rmi pinkcandy02/springproject:latest
            """
       }
     } 
