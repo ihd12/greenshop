@@ -10,7 +10,15 @@ pipeline {
     REGION = "ap-northeast-2"
     AWS_CREDENTIAL_NAME = 'awsTeam4'
   }
-
+  stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    credentialsId: 'gitToken',
+                    url: 'https://github.com/design-view/springproject.git'
+            }
+        }
+  }
   stages {
     stage('Git Clone') {
       steps {
