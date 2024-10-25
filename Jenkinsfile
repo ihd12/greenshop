@@ -76,7 +76,7 @@ pipeline {
                     aws deploy create-deployment-group \
                     --application-name team4-min-test-codedeploy \
                     --auto-scaling-groups team4-asg \
-                    --deployment-group-name team4-min-test-jenkins-${BUILD_NUMBER} \
+                    --deployment-group-name team4-min-test-codedeploy-${BUILD_NUMBER} \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
                     --service-role-arn arn:aws:iam::491085389788:role/team4-min-test-codedeploy
                     '''
@@ -84,7 +84,7 @@ pipeline {
                 sh '''
                     aws deploy create-deployment --application-name team4-min-test-codedeploy \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
-                    --deployment-group-name team4-min-test-jenkin-${BUILD_NUMBER} \
+                    --deployment-group-name team4-min-test-codedeploy-${BUILD_NUMBER} \
                     --s3-location bucket=team4-min-test-s3,bundleType=zip,key=deploy.zip
                     '''
                     sleep(10) // sleep 10s
