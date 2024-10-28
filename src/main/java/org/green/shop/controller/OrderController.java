@@ -43,7 +43,7 @@ public class OrderController {
         List<OrderHistDTO> result = orderService
                 .getOrderList(principal.getName());
         model.addAttribute("result",result);
-        return "/order/orderHist";
+        return "order/orderHist";
     }
     //주문취소하기
     @PostMapping("/order/{orderId}/cancel")

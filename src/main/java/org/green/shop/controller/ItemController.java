@@ -22,7 +22,7 @@ public class ItemController {
     @CrossOrigin(origins = "http://team4min.jinlabs.net/:80")
     public String itemadd(Model model){
         model.addAttribute("itemDTO",new ItemDTO());
-        return "/item/itemadd";
+        return "item/itemadd";
     }
     @PostMapping("/admin/item/new")
     @CrossOrigin(origins = "http://team4min.jinlabs.net/:80")
@@ -32,7 +32,7 @@ public class ItemController {
         if(itemImgFileList.get(0).isEmpty()){
             model.addAttribute("errorMessage"
                     ,"첫번째 이미지는 필수입니다.");
-            return "/item/itemadd";
+            return "item/itemadd";
         }
         itemService.saveItem(itemDTO,itemImgFileList);
         return "redirect:/";
@@ -43,7 +43,7 @@ public class ItemController {
     public String itemList(Model model, PageRequestDTO pageRequestDTO){
         PageResultDTO<ItemDTO, Item> result = itemService.getList(pageRequestDTO);
         model.addAttribute("result",result);
-        return "/item/itemlist";
+        return "item/itemlist";
     }
     //상품하나조회
     @GetMapping("/admin/item/{itemId}")
@@ -52,7 +52,7 @@ public class ItemController {
        ItemDTO itemDTO = itemService.getItem(itemId);
        model.addAttribute("itemDTO",itemDTO);
        System.out.println(itemDTO.toString());
-       return "/item/itemdetail";
+       return "item/itemdetail";
     }
     //상품수정
     @PostMapping("/admin/item/")

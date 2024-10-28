@@ -37,7 +37,7 @@ public class CartController {
     public String cartList(Principal principal, Model model){
        List<CartDetailDTO> result = cartService.getCartList(principal.getName());
        model.addAttribute("result",result);
-       return "/cart/cartList";
+       return "cart/cartList";
     }
 
     //장바구니아이템 수량 수정
