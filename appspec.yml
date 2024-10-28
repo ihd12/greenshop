@@ -12,10 +12,10 @@ permissions:
     group: ubuntu
 hooks:
   ApplicationStop:
-    - location: deploy/scripts/kill_process.sh
+    - location: deploy/script/kill_process.sh
       timeout: 100
       runas: ubuntu
   ApplicationStart:
-    - location: deploy/scripts/run_process.sh
+    - location: deploy/script/run_process.sh
       timeout: 3600
       runas: ubuntu
