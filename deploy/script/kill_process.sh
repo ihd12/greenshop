@@ -1,2 +1,2 @@
 #!/bin/bash
-docker-compose -f /home/ubuntu/deploy/scripts/deocker-compose.yml down || true
+docker-compose -f /home/ubuntu/deploy/script/deocker-compose.yml down || true
