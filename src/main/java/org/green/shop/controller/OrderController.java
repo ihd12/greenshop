@@ -20,7 +20,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/order")
-    @CrossOrigin(origins = "http://team4min.jinlabs.net/:80")
+    @CrossOrigin(origins = "http://team4min.jinlabs.net:80")
     //@ResponseBody 자바객체를 http요청의 body로 전달
     //@RequestBody  http요청의 본문 body에 담긴 내용을 자바 객체로 전달
     //@Controller어노테이션이 선언된 클래스에서 메소드 인자로 principal객체를
@@ -38,7 +38,7 @@ public class OrderController {
     }
     //주문목록조회
     @GetMapping("/orders")
-    @CrossOrigin(origins = "http://team4min.jinlabs.net/:80")
+    @CrossOrigin(origins = "http://team4min.jinlabs.net:80")
     public String orderHist(Principal principal, Model model){
         List<OrderHistDTO> result = orderService
                 .getOrderList(principal.getName());
@@ -47,7 +47,7 @@ public class OrderController {
     }
     //주문취소하기
     @PostMapping("/order/{orderId}/cancel")
-    @CrossOrigin(origins = "http://team4min.jinlabs.net/:80")
+    @CrossOrigin(origins = "http://team4min.jinlabs.net:80")
     public @ResponseBody ResponseEntity cancelOrder(@PathVariable("orderId") Long orderId,
                                                     Principal principal){
         //로그인한 사용자와 주문한 사용자가 일치하는지 체크
@@ -61,7 +61,7 @@ public class OrderController {
     }
     //주문이력삭제하기
     @DeleteMapping("/order/{orderId}")
-    @CrossOrigin(origins = "http://team4min.jinlabs.net/:80")
+    @CrossOrigin(origins = "http://team4min.jinlabs.net:80")
     public @ResponseBody ResponseEntity deleteOrder(@PathVariable("orderId") Long orderId){
         orderService.deleteOrder(orderId);
         return new ResponseEntity<Long>(orderId,HttpStatus.OK);

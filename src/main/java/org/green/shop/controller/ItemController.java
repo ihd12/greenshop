@@ -71,7 +71,7 @@ public class ItemController {
     }
     //상품상세보기
     @GetMapping("/item/{itemId}")
-    @CrossOrigin(origins = "http://team4min.jinlabs.net/:80")
+    @CrossOrigin(origins = "http://team4min.jinlabs.net:80")
     public String itemDetailView(@PathVariable("itemId") Long itemId, Model model){
         ItemDTO itemDTO= itemService.getItem(itemId);
         model.addAttribute("itemDTO",itemDTO);

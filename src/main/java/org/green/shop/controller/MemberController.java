@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/member")
-@CrossOrigin(origins = "http://team4min.jinlabs.net/:80")
+@CrossOrigin(origins = "http://team4min.jinlabs.net:80")
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;

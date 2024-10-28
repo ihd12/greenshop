@@ -21,7 +21,7 @@ public class MainController {
     private final ItemService itemService;
 
     @GetMapping("/")
-    @CrossOrigin(origins = "http://team4min.jinlabs.net/:80")
+    @CrossOrigin(origins = "http://team4min.jinlabs.net:80")
     public String mainPage(Model model, PageRequestDTO requestDTO){
         PageResultDTO<MainItemDTO,Object[]> result= itemService.getMainList(requestDTO);
         model.addAttribute("result",result);
