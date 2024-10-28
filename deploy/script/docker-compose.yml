@@ -1,7 +1,7 @@
 version: '3.9'
 services:
-  spring-petclinic:
+  springproject:
     image: pinkcandy02/springproject:latest
-    container_name: spring-petclinic
+    container_name: springproject
     ports:
       - "80:8080"
