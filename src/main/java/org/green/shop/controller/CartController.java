@@ -21,7 +21,6 @@ public class CartController {
     private final CartService cartService;
 
     @PostMapping("/cart")
-    @CrossOrigin(origins = "http://team4min.jinlabs.net:80")
     public @ResponseBody ResponseEntity addCart(@RequestBody CartItemDTO cartItemDTO
             , Principal principal){
         String email =  principal.getName();
