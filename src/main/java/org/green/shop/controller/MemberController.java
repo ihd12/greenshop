@@ -37,7 +37,7 @@ public class MemberController {
     }
     @GetMapping("/login")
     public String loginMember(){
-        return "/member/memberLogin";
+        return "member/memberLogin";
     }
     @GetMapping("/login/error")
     public String loginMember(Model model){
