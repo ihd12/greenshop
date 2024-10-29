@@ -82,7 +82,7 @@ pipeline {
                 sh '''
                     aws deploy create-deployment-group \
                     --application-name team4-min-test-codedeploy \
-                    --auto-scaling-groups team4-asg \
+                    --auto-scaling-groups team4-asg-test \
                     --deployment-group-name team4-min-test-codedeploy-${BUILD_NUMBER} \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
                     --service-role-arn arn:aws:iam::491085389788:role/team4-min-test-codedeploy
