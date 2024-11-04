@@ -70,7 +70,7 @@ pipeline {
         dir("${env.WORKSPACE}") {
           sh 'zip -r deploy.zip ./deploy appspec.yml'
           withAWS(region:"${REGION}", credentials: "${AWS_CREDENTIAL_NAME}"){
-            s3Upload(file:"deploy.zip", bucket:"team4-min-test-s3")
+            s3Upload(file:"deploy.zip", bucket:"team4-codedeploy-s3")
           }
           sh 'rm -rf ./deploy.zip'
         }
@@ -82,7 +82,7 @@ pipeline {
                 sh '''
                     aws deploy create-deployment-group \
                     --application-name team4-codedeploy \
-                    --auto-scaling-groups team4-asg-test \
+                    --auto-scaling-groups team4-shop-asg \
                     --deployment-group-name team4-codedeploy-n-${BUILD_NUMBER} \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
                     --service-role-arn arn:aws:iam::491085389788:role/team4-min-test-codedeploy
@@ -92,7 +92,7 @@ pipeline {
                     aws deploy create-deployment --application-name team4-codedeploy \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
                     --deployment-group-name team4-codedeploy-n-${BUILD_NUMBER} \
-                    --s3-location bucket=team4-shop-asg,bundleType=zip,key=deploy.zip
+                    --s3-location bucket=team4-codedeploy-s3,bundleType=zip,key=deploy.zip
                     '''
                     sleep(10) // sleep 10s
             }
