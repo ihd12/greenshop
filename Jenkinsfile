@@ -81,18 +81,18 @@ pipeline {
                echo "create Codedeploy group"   
                 sh '''
                     aws deploy create-deployment-group \
-                    --application-name team4-min-test-codedeploy \
+                    --application-name team4-codedeploy \
                     --auto-scaling-groups team4-asg-test \
-                    --deployment-group-name team4-min-test-codedeploy-${BUILD_NUMBER} \
+                    --deployment-group-name team4-codedeploy-n-${BUILD_NUMBER} \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
                     --service-role-arn arn:aws:iam::491085389788:role/team4-min-test-codedeploy
                     '''
                 echo "Codedeploy Workload"   
                 sh '''
-                    aws deploy create-deployment --application-name team4-min-test-codedeploy \
+                    aws deploy create-deployment --application-name team4-codedeploy \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
-                    --deployment-group-name team4-min-test-codedeploy-${BUILD_NUMBER} \
-                    --s3-location bucket=team4-min-test-s3,bundleType=zip,key=deploy.zip
+                    --deployment-group-name team4-codedeploy-n-${BUILD_NUMBER} \
+                    --s3-location bucket=team4-shop-asg,bundleType=zip,key=deploy.zip
                     '''
                     sleep(10) // sleep 10s
             }
