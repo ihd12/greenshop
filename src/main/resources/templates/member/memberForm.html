@@ -42,7 +42,7 @@
         let email = $("#email").val();
         $.ajax({
             type:"POST",
-            url:"/member/emailcheck",
+            url:"/emailcheck",
             data:{"email":email},
             dataType:"text"
         })
