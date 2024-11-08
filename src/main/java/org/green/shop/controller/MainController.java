@@ -9,6 +9,7 @@ import org.green.shop.service.ItemService;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 public class MainController {
 
     private final ItemService itemService;
+
     @GetMapping("/")
     public String mainPage(Model model, PageRequestDTO requestDTO){
         PageResultDTO<MainItemDTO,Object[]> result= itemService.getMainList(requestDTO);

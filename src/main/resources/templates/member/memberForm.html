@@ -3,7 +3,7 @@
 <th:block th:replace="~{layout/basic::setContent(~{this::content})}">
     <th:block th:fragment="content">
         <h1>회원가입</h1>
-        <form action="/member/join" method="post" onsubmit="return valid()">
+        <form action="/join" method="post" onsubmit="return valid()">
             <div class="form-group">
                 <label for="name">이름</label>
                 <input type="text" required class="form-control" id="name"
@@ -42,7 +42,7 @@
         let email = $("#email").val();
         $.ajax({
             type:"POST",
-            url:"/member/emailcheck",
+            url:"/emailcheck",
             data:{"email":email},
             dataType:"text"
         })

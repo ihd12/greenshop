@@ -8,18 +8,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/member")
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
 
-    @GetMapping("/join")
+    @GetMapping("/join_page")
     public String memberForm(){
+
         return "member/memberForm";
     }
     @PostMapping("/join")
@@ -33,7 +34,7 @@ public class MemberController {
         String result = memberService.validateMember(memberDTO);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-    @GetMapping("/login")
+    @GetMapping("/login_page")
     public String loginMember(){
         return "member/memberLogin";
     }
