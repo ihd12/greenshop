@@ -30,7 +30,7 @@ public class SecurityConfig {
         //defaultSuccessUrl("/") : 로그인시 이동할 페이지 지정
         //loginProcessingUrl("/loginProc") : 사용자로그인페이지 form action속성값
         http.formLogin(login->login.loginPage("/login_page")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/",true)
                 .loginProcessingUrl("/loginProc")
                 .failureUrl("/login/error")
         );
